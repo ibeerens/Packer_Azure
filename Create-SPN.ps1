@@ -7,7 +7,13 @@ Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI
 # az login -u <username> -p <password>
 az login
 
-# Create Service Principal Name
+# Select and document the subscription ID
+az account list --output table
+
+# Select the subscription
+az account set --subscription <Azure-SubscriptionId>
+
+# Create Service Principal Name (SPN)
 az ad sp create-for-rbac --name="spn_packer" --role="Contributor" --query="{ client_id: appId, client_secret: password, tenant_id: tenant }"
 
 # Document the output 
@@ -16,3 +22,6 @@ az ad sp create-for-rbac --name="spn_packer" --role="Contributor" --query="{ cli
 #  "client_secret": "1cfCP_sjdFYUw4bJKCmd86j1eX.000000",
 #  "tenant_id": "5f89a471-531d-4e5e0000000-00000000"
 # }
+
+# Create a Resource Group for the Packer VM
+az group create -l WestEurope -n PackerDemo-RG
