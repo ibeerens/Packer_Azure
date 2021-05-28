@@ -1,3 +1,5 @@
+# https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal
+
 # Download Azure CLI
 Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; rm .\AzureCLI.msi
 
